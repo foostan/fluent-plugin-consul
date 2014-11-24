@@ -30,8 +30,6 @@ module Fluent
       end
     end
 
-    self
-
     def consul_kvs_fmt(data)
       kvs = []
 
