@@ -26,5 +26,5 @@ for example, input data is
 - record: {"json":"message"}
 
 stored Key/Value Storage of Consul
-- <kv_prefix>/debug.test/time: 1416929597
-- <kv_prefix>/debug.test/record/json: message
+- {kv_prefix}/debug.test/time: 1416929597
+- {kv_prefix}/debug.test/record/json: message
