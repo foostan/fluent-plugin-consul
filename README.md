@@ -4,5 +4,27 @@ fluent-plugin-consul store Fluentd event to Consul Key/Value Storage
 
 ## Installing
 
-to be uploaded on Rubygems
+```
+gem install fluent-plugin-consul
+```
 
+## Configuration
+example configuration
+
+```
+<store>
+  type consul
+  consul_uri http://localhost:8500 # default
+  kv_prefix fluentd # default
+</store>
+```
+
+## Storing to Consul
+for example, input data is
+- tag: debug.test
+- time: 1416929597
+- record: {"json":"message"}
+
+stored Key/Value Storage of Consul
+- <kv_prefix>/debug.test/time: 1416929597
+- <kv_prefix>/debug.test/record/json: message
