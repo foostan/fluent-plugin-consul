@@ -19,14 +19,14 @@ module Fluent
     end
 
     def format(tag, time, record)
-      { tag => { time: time, record: record } }.to_json
+      [tag, time, record].to_msgpack
     end
 
     def write(chunk)
-      data = JSON.parse(chunk.read)
-
-      consul_kvs_fmt(data).each do |kv|
-        ::Diplomat.put(@kv_prefix + kv[:key].to_s, kv[:value].to_s)
+      chunk.msgpack_each do |tag, time, record|
+        consul_kvs_fmt(record).each do |kv|
+          ::Diplomat.put(@kv_prefix + '/' + tag + kv[:key].to_s, kv[:value].to_s)
+        end
       end
     end
 
