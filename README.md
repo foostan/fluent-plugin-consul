@@ -20,8 +20,24 @@ example configuration
 ```
 
 ## Storing to Consul
-for example, input json format data
-- record: {"json":"message"}
+input a json format data and store to Consul
+
+for example, input record is
+```json
+{
+    "server": {
+        "ip":"10.0.0.10",
+        "netmask":"255.0.0.0"
+    },
+    "client": {
+        "ip":"192.168.33.10",
+        "netmask":"255.255.255.0"
+    }
+}
+```
 
 stored Key/Value Storage of Consul
-- {kv_prefix}/record/json: message
+- {kv_prefix}/server/ip: 10.0.0.10
+- {kv_prefix}/server/netmask: 255.0.0.0
+- {kv_prefix}/client/ip: 192.168.33.10
+- {kv_prefix}/client/netmask: 255.255.255.0
