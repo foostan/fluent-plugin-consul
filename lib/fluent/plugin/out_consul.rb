@@ -25,7 +25,7 @@ module Fluent
     def write(chunk)
       chunk.msgpack_each do |tag, time, record|
         consul_kvs_fmt(record).each do |kv|
-          ::Diplomat.put(@kv_prefix + '/' + tag + kv[:key].to_s, kv[:value].to_s)
+          ::Diplomat.put(@kv_prefix + kv[:key].to_s, kv[:value].to_s)
         end
       end
     end

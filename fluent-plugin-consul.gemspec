@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-consul"
-  spec.version       = "0.0.2"
+  spec.version       = "0.0.3"
   spec.authors       = ["foostan"]
   spec.email         = ["ks@fstn.jp"]
   spec.summary       = %q{Store Fluentd event to Consul Key/Value Storage}

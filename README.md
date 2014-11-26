@@ -20,9 +20,8 @@ example configuration
 ```
 
 ## Storing to Consul
-for example, input data is
-- tag: debug.test
+for example, input json format data
 - record: {"json":"message"}
 
 stored Key/Value Storage of Consul
-- {kv_prefix}/debug.test/record/json: message
+- {kv_prefix}/record/json: message
