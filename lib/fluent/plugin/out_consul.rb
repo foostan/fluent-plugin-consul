@@ -1,6 +1,9 @@
-module Fluent
+require 'diplomat'
+require 'fluent/plugin/output'
 
-  class ConsulOutput < Fluent::BufferedOutput
+module Fluent::Plugin
+
+  class ConsulOutput < Fluent::Output
     Fluent::Plugin.register_output('consul', self)
 
     config_param :consul_uri, :string, :default => 'http://localhost:8500'
@@ -8,7 +11,6 @@ module Fluent
 
     def initialize
       super
-      require 'diplomat'
     end
 
     def configure(conf)
@@ -28,6 +30,10 @@ module Fluent
           ::Diplomat.put(@kv_prefix + kv[:key].to_s, kv[:value].to_s)
         end
       end
+    end
+
+    def formatted_to_msgpack_binary?
+      true
     end
 
     def consul_kvs_fmt(data)

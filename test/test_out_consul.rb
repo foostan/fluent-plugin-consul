@@ -1,7 +1,8 @@
 require 'fluent/test'
+require 'fluent/test/driver/output'
 require 'fluent/plugin/out_consul'
 
-class TestConsulOutput < MiniTest::Unit::TestCase
+class TestConsulOutput < Test::Unit::TestCase
   def setup
     Fluent::Test.setup
   end
@@ -12,7 +13,7 @@ class TestConsulOutput < MiniTest::Unit::TestCase
   '
 
   def create_driver(conf = CONFIG)
-    Fluent::Test::BufferedOutputTestDriver.new(Fluent::ConsulOutput) do
+    Fluent::Test::Driver::Output.new(Fluent::Plugin::ConsulOutput) do
       def write(chunk)
         chunk.read
       end
