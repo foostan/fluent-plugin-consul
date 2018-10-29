@@ -1,7 +1,7 @@
 require 'fluent/test'
 require 'fluent/plugin/out_consul'
 
-class TestConsulOutput < MiniTest::Unit::TestCase
+class TestConsulOutput < Test::Unit::TestCase
   def setup
     Fluent::Test.setup
   end
